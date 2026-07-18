@@ -1,0 +1,64 @@
+/* =========================================================
+   Responsive breakpoints (Tailwind defaults: sm 640, md 768, lg 1024, xl 1280)
+   ========================================================= */
+
+/* sm: 640px+ */
+@media (min-width: 640px) {
+  .domains-section { padding-left: 2rem; padding-right: 2rem; }
+  .domains-title { font-size: 3.75rem; }
+}
+
+/* md: 768px+ */
+@media (min-width: 768px) {
+  .domains-tag { display: block; }
+
+  .pods-row {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+    padding: 0;
+    gap: 0.75rem;
+  }
+  .pod-slot { min-width: 0; }
+
+  .chamber { height: 33rem; min-width: 0; }
+
+  .info-panel {
+    left: auto;
+    right: 2rem;
+    bottom: 2rem;
+    width: 26rem;
+  }
+
+  .bg-emblem { transform: scale(1.5); }
+}
+
+/* lg: 1024px+ */
+@media (min-width: 1024px) {
+  .domains-section {
+    display: flex;
+    height: 100vh;
+    min-height: 42rem;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .domains-header { margin-bottom: 1.25rem; }
+
+  .domains-title { font-size: 3.75rem; }
+
+  .pods-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .chamber { height: 25rem; }
+}
+
+/* xl: 1280px+ */
+@media (min-width: 1280px) {
+  .domains-title { font-size: 4.5rem; }
+
+  .chamber { height: 28rem; }
+}

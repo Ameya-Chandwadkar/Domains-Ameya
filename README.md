@@ -1,7 +1,21 @@
 # Scout Regiment Hackathon
 
-Run locally with `npm run dev`, then open `http://localhost:3000`.
+Plain HTML, CSS, and vanilla JavaScript — no build step, no framework.
 
-`public/images/` now contains original fallback portraits under the expected filenames, so the app renders without broken images. Replace `levi.png`, `mikasa.png`, `eren.png`, and `armin.png` with your final licensed transparent character PNGs whenever they are available; keep the filenames unchanged.
+Open `index.html` directly in a browser, or serve the folder with any static
+file server (e.g. `npx serve .`).
 
-The project is a Next.js App Router app using TypeScript, Tailwind CSS v4, and Framer Motion. Production verification: `npm run lint` and `npm run build`.
+`images/titans/` holds the four titan portraits used by the domain chambers;
+keep the filenames unchanged if you replace them.
+
+## Structure
+
+- `index.html` — page markup
+- `css/style.css` — base styles and layout
+- `css/animations.css` — keyframes for all effects
+- `css/responsive.css` — breakpoints
+- `js/domains.js` — domain/titan data
+- `js/main.js` — rendering + hover/selection state
+- `js/animations.js` — reduced-motion + entrance stagger helpers
+- `js/particles.js` — floating dust particle generator
+- `images/` — titan portraits and background art

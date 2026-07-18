@@ -1,0 +1,82 @@
+/* =========================================================
+   Keyframes — ported from globals.css / Framer Motion props
+   ========================================================= */
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtle-breathe {
+  0%, 100% { transform: translateY(0px) scale(1.0) rotate(0deg); }
+  50% { transform: translateY(-2px) scale(1.005) rotate(0.5deg); }
+}
+
+@keyframes gas-burst {
+  0% { transform: translateY(15px) scale(0.3); opacity: 0; filter: blur(2px); }
+  15% { transform: translateY(5px) scale(1.2); opacity: 0.9; filter: blur(4px); }
+  60% { transform: translateY(-10px) scale(2.5); opacity: 0.3; filter: blur(12px); }
+  100% { transform: translateY(-20px) scale(3.5); opacity: 0; filter: blur(20px); }
+}
+
+@keyframes dust-drift {
+  0% { transform: translateY(0) scale(1) translateX(0); opacity: 0; }
+  20% { opacity: 0.4; }
+  80% { opacity: 0.4; }
+  100% { transform: translateY(-40px) scale(0.5) translateX(var(--dust-drift-x, 10px)); opacity: 0; }
+}
+
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Chamber "doors" sliding open to reveal the active pod */
+@keyframes door-slide-left {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+@keyframes door-slide-right {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* Background bunker cables swaying */
+@keyframes cable-sway-a {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+@keyframes cable-sway-b {
+  0%, 100% { transform: rotate(1deg); }
+  50% { transform: rotate(-1deg); }
+}
+@keyframes cable-sway-c {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* Background warning lights pulsing */
+@keyframes redlight-a {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+}
+@keyframes redlight-b {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.5; }
+}
+
+/* Background fog drifting */
+@keyframes fog-drift-a {
+  0%, 100% { transform: translateX(0); opacity: 0.3; }
+  50% { transform: translateX(40px); opacity: 0.6; }
+}
+@keyframes fog-drift-b {
+  0%, 100% { transform: translateX(0); opacity: 0.2; }
+  50% { transform: translateX(-30px); opacity: 0.5; }
+}
+
+/* Floating dust particles */
+@keyframes particle-drift {
+  0%, 100% { transform: translateY(0); opacity: 0.05; }
+  50% { transform: translateY(-34px); opacity: 0.45; }
+}

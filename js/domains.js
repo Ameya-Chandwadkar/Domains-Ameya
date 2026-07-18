@@ -1,0 +1,58 @@
+/**
+ * Domain/Titan data — ported 1:1 from src/components/domains/domains.ts
+ * Shape: { id, character, title, description, ideas, technologies, difficulty, team, image, accent, variation }
+ */
+const DOMAINS = [
+  {
+    id: "levi",
+    character: "War Hammer Titan",
+    title: "Agentic AI",
+    description: "Build autonomous systems that perceive, plan, and act with disciplined tactical precision.",
+    ideas: ["Multi-agent incident commander", "Autonomous research operative"],
+    technologies: ["Python", "LangGraph", "FastAPI", "Vector DB"],
+    difficulty: "Advanced",
+    team: "3–4 builders · ML + backend + product",
+    image: "images/titans/WhatsApp Image 2026-07-18 at 5.45.11 PM.jpeg",
+    accent: "#6EE7FF",
+    variation: 0,
+  },
+  {
+    id: "mikasa",
+    character: "Cart Titan",
+    title: "Social Cause",
+    description: "Create dependable tools that protect people, strengthen communities, and drive measurable change.",
+    ideas: ["Crisis-response network", "Accessible care navigator"],
+    technologies: ["React", "Node.js", "Maps API", "PostgreSQL"],
+    difficulty: "Intermediate",
+    team: "2–4 builders · UX + full-stack",
+    image: "images/titans/Cart-titan.jpeg",
+    accent: "#D91E18",
+    variation: 1,
+  },
+  {
+    id: "eren",
+    character: "Armored Titan",
+    title: "Blockchain",
+    description: "Challenge centralized systems with transparent, verifiable infrastructure built for freedom.",
+    ideas: ["Proof-of-impact ledger", "Decentralized credential vault"],
+    technologies: ["Solidity", "ethers.js", "Next.js", "IPFS"],
+    difficulty: "Advanced",
+    team: "3–4 builders · contracts + frontend",
+    image: "images/titans/Armored-titan.png",
+    accent: "#14F195",
+    variation: 2,
+  },
+  {
+    id: "armin",
+    character: "Colossal Titan",
+    title: "Generative AI",
+    description: "Turn imagination into useful new media, interfaces, and experiences through creative intelligence.",
+    ideas: ["Adaptive story architect", "Generative learning companion"],
+    technologies: ["TypeScript", "OpenAI API", "RAG", "Vercel AI SDK"],
+    difficulty: "Intermediate",
+    team: "2–4 builders · AI + design + frontend",
+    image: "images/titans/Colossal-titan.jpg",
+    accent: "#e7d78a",
+    variation: 3,
+  },
+];
