@@ -15,7 +15,7 @@ export function DomainPod({ domain, active, dimmed, onSelect, onMouseEnter, onMo
   if (domain.id === "eren") { vibScale = 2; leanAngle = 3.5; }
   if (domain.id === "armin") { animDuration = "0.45s"; leanAngle = 2; }
 
-  return <motion.button type="button" onClick={onSelect} onHoverStart={onMouseEnter} onHoverEnd={onMouseLeave} aria-pressed={active} aria-label={`Open ${domain.title} domain`} className="group relative h-[29rem] w-full min-w-[17.5rem] flex-1 overflow-hidden rounded-[2rem] bg-[#161719] text-left outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 md:h-[33rem] md:min-w-0 lg:h-[25rem] xl:h-[28rem] animate-vibrate shadow-[inset_0_0_20px_rgba(0,0,0,1),0_15px_35px_rgba(0,0,0,0.8)]" style={{ "--accent": domain.accent, "--vib-scale": vibScale, "--anim-duration": animDuration } as CSSProperties} initial={{ opacity: 0, y: 36 }} animate={{ opacity: dimmed ? .32 : 1, y: 0, scale: active ? 1.025 : 1, filter: dimmed ? "blur(2px) brightness(.45)" : "blur(0) brightness(1)" }} transition={{ type: "spring", stiffness: 110, damping: 18, delay: domain.variation * .1 }} whileHover={reduceMotion ? undefined : { y: -5, scale: 1.05 }}>
+  return <motion.button type="button" onClick={onSelect} onHoverStart={onMouseEnter} onHoverEnd={onMouseLeave} aria-pressed={active} aria-label={`Open ${domain.title} domain`} className="group relative h-[29rem] w-full min-w-[17.5rem] flex-1 overflow-hidden rounded-[2rem] bg-[#161719] text-left outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 md:h-[33rem] md:min-w-0 lg:h-[25rem] xl:h-[28rem] animate-vibrate shadow-[inset_0_0_20px_rgba(0,0,0,1),0_15px_35px_rgba(0,0,0,0.8)] hover:shadow-[inset_0_0_20px_rgba(0,0,0,1),0_0_30px_rgba(220,38,38,0.3)]" style={{ "--accent": domain.accent, "--vib-scale": vibScale, "--anim-duration": animDuration } as CSSProperties} initial={{ opacity: 0, y: 36 }} animate={{ opacity: dimmed ? .32 : 1, y: 0, scale: active ? 1.025 : 1, filter: dimmed ? "blur(2px) brightness(.45)" : "blur(0) brightness(1)" }} transition={{ type: "spring", stiffness: 110, damping: 18, delay: domain.variation * .1 }} whileHover={reduceMotion ? undefined : { y: -10, scale: 1.15 }}>
     
     {/* Thick Metal Frame Base Casing */}
     <div className="absolute inset-0 border-[8px] border-[#25282d] rounded-[2rem] pointer-events-none z-50" />
@@ -24,7 +24,7 @@ export function DomainPod({ domain, active, dimmed, onSelect, onMouseEnter, onMo
     {/* Inner Chamber Background (Glow & Fog) */}
     <div className="absolute inset-[8px] rounded-[1.5rem] overflow-hidden pointer-events-none z-10">
         {/* Fog & Edge Glow */}
-        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[var(--accent)]/40 via-[var(--accent)]/10 to-transparent blur-2xl opacity-60 mix-blend-screen group-hover:opacity-90 transition-opacity duration-[var(--anim-duration)]" />
+        <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[var(--accent)]/40 via-[var(--accent)]/10 to-transparent blur-2xl opacity-60 mix-blend-screen group-hover:opacity-90 group-hover:h-[70%] transition-all duration-1000" />
         <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-white/10 to-transparent blur-md" />
         <div className="absolute inset-0 shadow-[inset_0_0_50px_var(--accent)] opacity-30 mix-blend-screen group-hover:opacity-70 transition-opacity duration-500" />
         
@@ -71,36 +71,37 @@ export function DomainPod({ domain, active, dimmed, onSelect, onMouseEnter, onMo
     </div>
 
     {/* Character Container with ODM Gear interactions */}
-    <div className="absolute inset-x-8 bottom-12 top-14 origin-bottom transition-transform duration-[var(--anim-duration)] ease-out group-hover:-translate-y-4 group-hover:scale-[1.12] group-hover:rotate-[2deg] z-20 pointer-events-none">
+    <div className="absolute inset-x-8 bottom-12 top-14 origin-bottom transition-transform duration-[var(--anim-duration)] ease-out group-hover:-translate-y-2 group-hover:scale-[1.03] group-hover:rotate-[2deg] z-20 pointer-events-none">
+      <div className="relative w-full h-full group-hover:animate-subtle-breathe">
       
       {/* Blue metallic rim light for gear (waist level back) */}
       <div className="absolute bottom-[20%] left-[30%] right-[30%] h-[15%] bg-[radial-gradient(ellipse_at_center,rgba(100,200,255,0.2),transparent_70%)] opacity-0 group-hover:opacity-100 blur-[15px] transition-opacity duration-300 mix-blend-screen" />
 
-      {/* Cables shoot out (fades out before launch) */}
-      <div className="absolute bottom-[25%] left-[25%] w-[2px] h-[100px] origin-bottom -rotate-[30deg] bg-gradient-to-t from-gray-400 to-white opacity-0 group-hover:animate-cable blur-[1px]" />
-      <div className="absolute bottom-[25%] right-[25%] w-[2px] h-[100px] origin-bottom rotate-[30deg] bg-gradient-to-t from-gray-400 to-white opacity-0 group-hover:animate-cable blur-[1px]" />
-
-      {/* Gas canisters steam burst */}
-      <div className="absolute bottom-[22%] left-[20%] w-12 h-8 bg-white/40 opacity-0 group-hover:animate-gas blur-md rounded-full mix-blend-screen" />
-      <div className="absolute bottom-[22%] right-[20%] w-12 h-8 bg-white/40 opacity-0 group-hover:animate-gas blur-md rounded-full mix-blend-screen" />
+      {/* Chamber steam vents (bottom) */}
+      <div className="absolute -bottom-4 left-[15%] w-20 h-16 bg-white/30 opacity-0 group-hover:animate-gas blur-xl rounded-t-full mix-blend-screen" />
+      <div className="absolute -bottom-4 right-[15%] w-20 h-16 bg-white/30 opacity-0 group-hover:animate-gas blur-xl rounded-t-full mix-blend-screen" />
       
-      {/* Tiny Sparks near the gear */}
-      <div className="absolute bottom-[24%] left-[22%] w-1 h-1 bg-white opacity-0 group-hover:animate-spark rounded-full" style={{ "--spark-dir-x": -1, "--spark-dir-y": -1.5, animationDelay: "0.05s" } as CSSProperties} />
-      <div className="absolute bottom-[23%] left-[24%] w-1 h-1 bg-white opacity-0 group-hover:animate-spark rounded-full" style={{ "--spark-dir-x": -1.5, "--spark-dir-y": -0.8, animationDelay: "0.1s" } as CSSProperties} />
-      <div className="absolute bottom-[24%] right-[22%] w-1 h-1 bg-white opacity-0 group-hover:animate-spark rounded-full" style={{ "--spark-dir-x": 1, "--spark-dir-y": -1.5, animationDelay: "0.02s" } as CSSProperties} />
-      <div className="absolute bottom-[23%] right-[24%] w-1 h-1 bg-white opacity-0 group-hover:animate-spark rounded-full" style={{ "--spark-dir-x": 1.5, "--spark-dir-y": -0.8, animationDelay: "0.08s" } as CSSProperties} />
+      {/* Dust particles drifting up */}
+      <div className="absolute bottom-[20%] left-[20%] w-1 h-1 bg-white opacity-0 group-hover:animate-dust rounded-full" style={{ "--spark-dir-x": -1.2, animationDelay: "0.0s" } as CSSProperties} />
+      <div className="absolute bottom-[25%] left-[30%] w-1.5 h-1.5 bg-white opacity-0 group-hover:animate-dust rounded-full" style={{ "--spark-dir-x": -0.5, animationDelay: "0.4s" } as CSSProperties} />
+      <div className="absolute bottom-[18%] right-[25%] w-1 h-1 bg-white opacity-0 group-hover:animate-dust rounded-full" style={{ "--spark-dir-x": 0.8, animationDelay: "0.2s" } as CSSProperties} />
+      <div className="absolute bottom-[22%] right-[35%] w-1.5 h-1.5 bg-white opacity-0 group-hover:animate-dust rounded-full" style={{ "--spark-dir-x": 1.5, animationDelay: "0.7s" } as CSSProperties} />
 
-      <Image src={domain.image} alt={domain.character} fill sizes="(max-width: 640px) 76vw, (max-width: 1024px) 40vw, 25vw" className={`object-contain object-bottom drop-shadow-[0_25px_25px_rgba(0,0,0,1)] transition-all duration-[var(--anim-duration)] ${domain.id === "armin" ? "brightness-[0.55]" : "brightness-[0.8]"} grayscale-[40%] sepia-[20%] contrast-125 group-hover:brightness-[1.1] group-hover:contrast-[1.1] group-hover:grayscale-0 group-hover:sepia-0 group-hover:drop-shadow-[0px_0px_20px_var(--accent)]`} priority={domain.variation < 2} />
+      {/* Faint Red Glow around head for awakened eyes */}
+      <div className="absolute top-[15%] left-[25%] right-[25%] h-[25%] bg-[radial-gradient(ellipse_at_center,rgba(255,50,0,0.25),transparent_60%)] opacity-0 group-hover:opacity-100 blur-[15px] transition-opacity duration-1000 mix-blend-screen z-30" />
+
+      <Image src={domain.image} alt={domain.character} fill sizes="(max-width: 640px) 76vw, (max-width: 1024px) 40vw, 25vw" className={`object-cover object-top drop-shadow-[0_25px_25px_rgba(0,0,0,1)] transition-all duration-[var(--anim-duration)] ${domain.id === "armin" ? "brightness-[0.55] scale-90" : domain.id === "mikasa" ? "brightness-[0.8] scale-90 group-hover:scale-100" : "brightness-[0.8]"} grayscale-[40%] sepia-[20%] contrast-125 group-hover:brightness-[1.1] group-hover:contrast-[1.1] group-hover:grayscale-0 group-hover:sepia-0 group-hover:drop-shadow-[0px_0px_20px_var(--accent)]`} priority={domain.variation < 2} />
       
       {/* Blue metallic rim light (waist level front overlay) */}
       <div className="absolute bottom-[20%] left-[25%] right-[25%] h-[10%] bg-[radial-gradient(ellipse_at_center,rgba(100,200,255,0.4),transparent_60%)] opacity-0 group-hover:opacity-100 blur-[8px] transition-opacity duration-300 mix-blend-screen" />
+      </div>
     </div>
     
     {/* Glass reflections & Condensation (Foreground) */}
     <div className="absolute inset-[8px] rounded-[1.5rem] overflow-hidden z-30 pointer-events-none">
         {/* Realistic glass reflection */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.03] via-white/[0.1] to-white/[0.02] mix-blend-overlay" />
-        <div className="absolute -inset-[100%] top-0 bg-gradient-to-b from-white/15 to-transparent rotate-12 translate-y-[-50%] group-hover:translate-y-[100%] transition-transform duration-1000 ease-in-out opacity-40 mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.03] via-white/[0.1] to-white/[0.02] group-hover:from-white/[0.06] group-hover:via-white/[0.2] group-hover:to-white/[0.04] transition-colors duration-[1s] mix-blend-overlay" />
+        <div className="absolute -inset-[100%] top-0 bg-gradient-to-b from-transparent via-white/30 to-transparent rotate-12 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-[1.5s] ease-in-out opacity-50 mix-blend-overlay" />
         
         {/* Scratches */}
         <div className="absolute inset-0 opacity-[0.25] mix-blend-screen" style={{ backgroundImage: "repeating-linear-gradient(65deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 3px, transparent 3px, transparent 12px, rgba(255,255,255,0.02) 12px, rgba(255,255,255,0.02) 13px)" }} />

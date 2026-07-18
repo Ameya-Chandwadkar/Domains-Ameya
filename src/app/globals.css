@@ -72,13 +72,12 @@ body {
 }
 
 @keyframes subtle-breathe {
-  0% { transform: translateY(0px) scale(1.0); }
-  50% { transform: translateY(1px) scale(1.01) skewX(0.5deg); }
-  100% { transform: translateY(0px) scale(1.0); }
+  0%, 100% { transform: translateY(0px) scale(1.0) rotate(0deg); }
+  50% { transform: translateY(-2px) scale(1.005) rotate(0.5deg); }
 }
 
 .animate-subtle-breathe {
-  animation: subtle-breathe 3s ease-in-out infinite;
+  animation: subtle-breathe 4s ease-in-out infinite;
 }
 
 @keyframes spark-flash {
@@ -89,4 +88,19 @@ body {
 
 .animate-spark {
   animation: spark-flash 0.25s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes dust-drift {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.4; }
+  80% { opacity: 0.4; }
+  100% { transform: translateY(-40px) scale(0.5) translateX(calc(var(--spark-dir-x, 1) * 10px)); opacity: 0; }
+}
+
+.group:hover .animate-dust {
+  animation: dust-drift 3s ease-out infinite;
+}
+
+.group:hover .animate-vibrate {
+  animation: pod-vibrate 0.2s ease-in-out;
 }

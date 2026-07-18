@@ -2,12 +2,13 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { FloatingParticles } from "./FloatingParticles";
 
-export function BackgroundEffects() {
+export function BackgroundEffects({ isHovered }: { isHovered?: boolean }) {
   const reduceMotion = useReducedMotion();
   return (
     <div className="absolute inset-0 overflow-hidden bg-[#07080a]" aria-hidden="true">
-      {/* Underground bunker walls (Concrete / Grid Texture) */}
-      <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(255,255,255,0.03) 100px), repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(255,255,255,0.03) 100px)" }} />
+      <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${isHovered ? 'opacity-40 blur-sm scale-[1.02]' : 'opacity-100 blur-0 scale-100'}`}>
+        {/* Underground bunker walls (Concrete / Grid Texture) */}
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(255,255,255,0.03) 100px), repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(255,255,255,0.03) 100px)" }} />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_10%,#030304_90%)] pointer-events-none" />
 
       {/* Steel beams (Horizontal and Vertical) */}
@@ -78,6 +79,7 @@ export function BackgroundEffects() {
 
       {/* Dust particles */}
       <FloatingParticles count={60} />
+      </div>
     </div>
   );
 }
